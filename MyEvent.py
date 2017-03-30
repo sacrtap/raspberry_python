@@ -5,7 +5,7 @@
 # @Site    : 
 # @File    : MyEvent.py
 # @Software: PyCharm
-import EventClass as Event
+from EventClass import Event
 
 
 class MyEvent(Event):
