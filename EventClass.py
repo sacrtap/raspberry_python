@@ -18,6 +18,7 @@ class Event(object):
         """
         self._type = event_type
         self._data = data
+
     @property
     def type(self):
         """

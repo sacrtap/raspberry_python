@@ -6,6 +6,7 @@
 # @File    : EventDispatcherClass.py
 # @Software: PyCharm
 
+
 class EventDispatcher(object):
     """
     event分发类 监听和分发event事件
@@ -46,6 +47,7 @@ class EventDispatcher(object):
             listeners = self._events[event.type]
             for listener in listeners:
                 listener(event)
+
     def add_event_listener(self,event_type,listener):
         """
         给某种事件类型添加listener
@@ -57,6 +59,7 @@ class EventDispatcher(object):
             listeners = self._events.get(event_type, [])
             listeners.append(listener)
             self._events[event_type] = listeners
+
     def remove_event_listener(self,event_type,listener):
         """
         移出某种事件类型的所以listener
