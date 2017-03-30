@@ -14,8 +14,6 @@ def simple_app(environ, start_response):
   response_headers = [('Content-type','text/plain')]
   start_response(status, response_headers)
   return environ['PATH_INFO'][1:]
-  #return ['Hello world!\n']
-
 
 httpd = make_server('127.0.0.1', 8082, simple_app)
 httpd.serve_forever()
