@@ -8,7 +8,7 @@
 # git pull origin master
 
 import web
-#import GPIOControl
+import GPIOControl
 import logging
 import logging.config
 
