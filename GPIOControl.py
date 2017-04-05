@@ -70,7 +70,7 @@ class GPIOController:
         self.p[2] = GPIO.PWM(self.wheelArray[2], _hz)  # channel=12 frequency=50Hz，赫兹=1/秒
         self.p[0].start(1)
         self.p[2].start(1)
-        logging.info('The Car has running Forward...')
+        logging.info('The Car has running Forward...'+str(_hz)+'Hz')
 
     def Stop(self):
         for px in self.p:
