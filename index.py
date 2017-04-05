@@ -30,7 +30,7 @@ class hello:
 
 class runForward:
     def GET(self):
-        #controller.runForward(50)
+        controller.runForward(50)
         return "running"
 
 if __name__ == "__main__":
