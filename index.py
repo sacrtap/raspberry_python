@@ -17,7 +17,7 @@ logger = logging.getLogger("example01")
 
 controller = GPIOControl.GPIOController()
 
-urls = ("/.*", "hello",
+urls = ("/", "hello",
         "/runForward", "runForward"
         )  # 指定任何url都指向hello类
 app = web.application(urls, globals())  # 绑定url
