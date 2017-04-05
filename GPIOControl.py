@@ -24,6 +24,7 @@ class GPIOController:
         logging.info('GPIO.setmode(GPIO.BOARD) is completed.')
         # 创建舵机实例对象
         for wl in self.wheelArray:
+            GPIO.setup(wl, GPIO.OUT)
             self.p.append(GPIO.PWM(wl, 0.5))
         logging.info('Control instance(4) is completed.')
 
