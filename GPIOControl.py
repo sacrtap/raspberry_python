@@ -19,6 +19,7 @@ class GPIOController:
         '''
         类初始化，GPIO.setmode(GPIO.BOARD)
         '''
+
         # 设置开发板模式
         GPIO.setwarnings(False)
         GPIO.setmode(GPIO.BOARD)
