@@ -66,7 +66,7 @@ class GPIOController:
         self.p[0].start(1)
         self.p[2].start(1)
         strInfo = 'The Car has running Forward...HZ:' + str(_hz)
-        logging.info(strInfo)
+        logging.info('The Car has running Forward...')
 
     def Stop(self):
         for px in self.p:
