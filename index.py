@@ -18,7 +18,7 @@ logger = logging.getLogger("example01")
 controller = GPIOControl.GPIOController()
 
 urls = ("/.*", "hello",
-        "/runForward","runForward"
+        "/runForward", "runForward"
         )  # 指定任何url都指向hello类
 app = web.application(urls, globals())  # 绑定url
 
@@ -31,6 +31,7 @@ class hello:
 class runForward:
     def GET(self):
         controller.runForward(50)
+        return "running"
 
 if __name__ == "__main__":
     app.run()
