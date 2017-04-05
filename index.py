@@ -21,8 +21,7 @@ app = web.application(urls, globals())  # 绑定url
 # 定义相应类
 class hello:
     def GET(self):
-        logging.info('web service is ok.')
-        logging.debug('web service is ok.')
+        logging.info('web service is connected.')
         return "hello"
 
 if __name__ == "__main__":
