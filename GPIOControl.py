@@ -10,6 +10,9 @@ import RPi.GPIO as GPIO
 import logging
 import logging.config
 
+logging.config.fileConfig("logger.conf")
+logger = logging.getLogger("example01")
+
 class GPIOController:
     wheelArray = [12,33,35,32] #存放轮序的数组，存储规则【左前、右前，左后，右后】
     p = [] #存放舵机实例对象
