@@ -7,8 +7,11 @@
 # @Software: PyCharm
 
 import web
+import RPi.GPIO as GPIO
 
-
+#设置开发板模式
+GPIO.setmode(GPIO.BOARD)
+GPIO.setup(12, GPIO.OUT)
 
 urls = ("/.*", "hello")  # 指定任何url都指向hello类
 app = web.application(urls, globals())  # 绑定url
