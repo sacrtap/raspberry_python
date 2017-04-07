@@ -11,14 +11,18 @@ import web
 import GPIOControl
 import logging
 import logging.config
+import serial
 
 logging.config.fileConfig("logger.conf")
 logger = logging.getLogger("example01")
 
+bluetoothSerial = serial.Serial( "/dev/rfcomm0", baudrate=9600 )
+
 controller = GPIOControl.GPIOController()
 
 urls = ("/", "hello",
-        "/runForward", "runForward"
+        "/runForward", "runForward",
+        "/bluetoothResponse","/bluetoothResponse"
         )  # 指定任何url都指向hello类
 app = web.application(urls, globals())  # 绑定url
 
@@ -32,6 +36,10 @@ class runForward:
     def GET(self):
         controller.runForward(50)
         return "running"
+
+class bluetoothResponse:
+    def GET(self):
+        return bluetoothSerial.readline()
 
 if __name__ == "__main__":
     app.run()
