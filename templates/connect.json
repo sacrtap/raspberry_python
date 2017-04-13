@@ -1,0 +1,23 @@
+$def with (_status, _frequency)
+{
+  "status" : "$_status",
+  "response" : "connect to server successful",
+  "frequency" : $_frequency,
+  "mode" : [
+      {
+          "name" : "free",
+          "description" : "自由控制模式",
+          "code" : "1"
+      },
+      {
+          "name" : "preset",
+          "description" : "预设模式",
+          "code" : "2"
+      },
+      {
+          "name" : "orbit",
+          "description" : "轨迹模式",
+          "code" : "3"
+      }
+  ]
+}
