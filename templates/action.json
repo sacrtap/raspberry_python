@@ -1,0 +1,6 @@
+$def with (_mode, _taskid, _status)
+{
+  "mode" : $_mode,
+  "taskid" : $_taskid,
+  "status" : "$_status"
+}

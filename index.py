@@ -19,14 +19,20 @@ logger = logging.getLogger("example01")
 #controller = GPIOControl.GPIOController()
 
 urls = ("/", "hello",
-        "/connect", "connect"
+        "/connect", "connect",
+        "/action","action"
         )  # 指定任何url都指向hello类
 
-app = web.application(urls, globals())
-application = app.wsgifunc()
+web.config.debug = True
+
 app_root = os.path.dirname(__file__)
 templates_root = os.path.join(app_root, 'templates')
 render = web.template.render(templates_root)
+
+modeArray = [1, 2, 3]
+
+def notfound():
+    return web.notfound("Sorry, the page you were looking for was not found.")
 
 # 定义相应类
 class hello:
@@ -34,16 +40,37 @@ class hello:
         logging.info('web service root.')
         return "web service root"
 
+
 class connect:
     def GET(self):
         _status = False
         _frequency = 0
         data = web.input()
-        _frequency = data.get('frequency')
-        if _frequency:
+        if data.get('frequency'):
             _status = True
-        web.header('Content-Type', 'text/json')
+            _frequency = data.get('frequency')
+        web.header('Content-Type', 'text/json; charset=utf-8', unique=True)
         return render.connect(_status, _frequency)
+
+class action:
+    def GET(self):
+        _mode = 0
+        _json = None
+        _taskid = 0
+        _status = False
+        data = web.input()
+        if ((int(data.get('mode')) in modeArray) and (data.get('xx') != "")):
+            _mode = data.get('mode')
+            _json = data.get('xx')
+            _status = True
+            _taskid = 10001
+
+        web.header('Content-Type', 'text/json; charset=utf-8', unique=True)
+        return render.action(_mode, _taskid, _status)
+
+app = web.application(urls, globals())
+app.notfound = notfound
+application = app.wsgifunc()
 
 if __name__ == "__main__":
     app.run()
