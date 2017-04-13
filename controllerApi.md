@@ -47,7 +47,7 @@
   <pre>
   example [mode = 1]:
     {
-        "direction" : "front", // [front、behind、left、right、up、down、stop] = [前、后、左、右、上、下]
+        "direction" : "front", // [front、behind、left、right、up、down] = [前、后、左、右、上、下]
         "speed" : "10" // 10cm per second
     }
     
@@ -118,4 +118,25 @@
   [10001] : 正在运行中
   [10002] : 运行完成
   [10003] : 轨迹出错
+  </pre>
+  
+#### 4.停止运行
+* 接口说明：向服务端发送完指令并成功后，通过接口返回的taskid停止相应任务的运行状态
+* 接口地址：http://192.168.1.101/stop
+* 接口类型：POST
+* 接口参数：
+  <pre>
+  * mode ： (int) 标识控制模式，根据mode值判定，取值范围[1,2,3]
+  * taskid : 任务ID
+  </pre>
+* 接口示例：
+  <pre>
+  {
+    "mode" : 1,
+    "taskid" : 10010, //标识正在进行的任务ID
+    "code" : 10001, //当前运行状态码
+    "error" : "出错相关信息"
+  }
+  运行状态码声明：
+  [10001] : 停止完成
   </pre>
