@@ -21,7 +21,8 @@ logger = logging.getLogger("example01")
 urls = ("/", "hello",
         "/connect", "connect",
         "/action","action",
-        "/getstatus",'getstatus'
+        "/getstatus","getstatus",
+        "/stop","stop"
         )  # 指定任何url都指向hello类
 
 web.config.debug = True
@@ -87,6 +88,21 @@ class getstatus:
             _taskid = data.get('taskid')
             _code = 10001
             logging.info('get status : mode is %s, taskid is %s, result : code is %s, error is %s', _mode,_taskid, _code, _error)
+            return render.getstatus(_mode, _taskid, _code, _error)
+
+class stop:
+    def GET(self):
+        logging.info('stop function :stop init...')
+        _mode = 0
+        _taskid = 0
+        _code = 10000
+        _error = "No Message"
+        data = web.input()
+        if ((int(data.get('mode')) in modeArray) and (data.get('taskid') != "")):
+            _mode = data.get('mode')
+            _taskid = data.get('taskid')
+            _code = 10001
+            logging.info('stop : mode is %s, taskid is %s, result : code is %s, error is %s', _mode, _taskid, _code, _error)
             return render.getstatus(_mode, _taskid, _code, _error)
 
 
