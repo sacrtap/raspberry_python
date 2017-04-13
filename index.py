@@ -101,7 +101,7 @@ class stop:
         if ((int(data.get('mode')) in modeArray) and (data.get('taskid') != "")):
             _mode = data.get('mode')
             _taskid = data.get('taskid')
-            _code = 10001
+            _code = 10006
             logging.info('stop : mode is %s, taskid is %s, result : code is %s, error is %s', _mode, _taskid, _code, _error)
             return render.getstatus(_mode, _taskid, _code, _error)
 
