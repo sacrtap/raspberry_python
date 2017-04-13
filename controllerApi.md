@@ -47,7 +47,7 @@
   <pre>
   example [mode = 1]:
     {
-        "direction" : "front", // [front、behind、left、right、up、down] = [前、后、左、右、上、下]
+        "direction" : "front", // [front、behind、left、right、up、down、stop] = [前、后、左、右、上、下]
         "speed" : "10" // 10cm per second
     }
     
