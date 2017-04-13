@@ -1,0 +1,7 @@
+$def with(_mode, _taskid, _code, _error)
+{
+  "mode" : $_mode,
+  "taskid" : $_taskid,
+  "code" : $_code,
+  "error" : "$_error"
+}

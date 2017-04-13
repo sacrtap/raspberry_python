@@ -20,7 +20,8 @@ logger = logging.getLogger("example01")
 
 urls = ("/", "hello",
         "/connect", "connect",
-        "/action","action"
+        "/action","action",
+        "/getstatus",'getstatus'
         )  # 指定任何url都指向hello类
 
 web.config.debug = True
@@ -59,14 +60,25 @@ class action:
         _taskid = 0
         _status = False
         data = web.input()
-        if ((int(data.get('mode')) in modeArray) and (data.get('xx') != "")):
+        if ((int(data.get('mode')) in modeArray) and (data.get('param') != "")):
             _mode = data.get('mode')
-            _json = data.get('xx')
+            _json = data.get('param')
             _status = True
             _taskid = 10001
 
         web.header('Content-Type', 'text/json; charset=utf-8', unique=True)
         return render.action(_mode, _taskid, _status)
+
+class getstatus:
+    def GET(self):
+        _mode = 0
+        _taskid = 0
+        _code = 10004
+        _error = "no message"
+        data = web.input()
+        if((int(data.get('mode')) in modeArray) and (data.get('taskid') != "")):
+            return render.getstatus(data.get('mode'), data.get('taskid'), _code, _error)
+
 
 app = web.application(urls, globals())
 app.notfound = notfound
