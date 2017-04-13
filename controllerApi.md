@@ -4,12 +4,16 @@
 * 接口说明：APP启动后，首先通过此接口请求获取必要的信息
 * 接口地址：http://192.168.1.101/connect
 * 接口类型：POST
-* 接口参数：无
+* 接口参数：
+  <pre>
+  * frequency : （int）向小车发送脉冲信号的频率，单位毫秒ms
+  </pre>
 * 接口返回值：
   <pre>
   {
     "status" : "true",
-    "response" : "connect to server successful"
+    "response" : "connect to server successful",
+    "frequency" : 20,
     "mode" : [
         { 
             "name" : "free",
@@ -29,7 +33,7 @@
     ]
   }
   </pre>
-  
+
 #### 2.即时指令发送
 * 接口说明：APP连接成功后，即时性的向服务端发送控制指令
 * 接口地址：http://192.168.1.101/action
@@ -49,7 +53,7 @@
     
   example [mode = 2]:(预设模式下，运动时长和距离不能同时存在)
     {
-        list:[
+        "list" : [
             {
                 "direction" : "front",
                 "speed" : "10",
@@ -64,8 +68,54 @@
                 "direction" : "right",
                 "speed" : "10",
                 "distance" : "400"// 运动距离，厘米
+            }
+        ]
+    }
+    
+    example [mode = 3]:(轨迹模式下，发送json文件)
+    {
+        "fpscapture" : 120,//每秒的采集帧数
+        "list" : [
+            {
+                "info" : "584.444,-40.6353,197.896"
             },
+            {
+                "info" : "584.444,-40.6353,197.896"
+            },
+            {
+                "info" : "584.444,-40.6353,197.896"
+            }
         ]
     }
     </pre>
 * 接口返回值：
+  <pre>
+  {
+    "mode" : 1,
+    "taskid" : 10010, //标识正在进行的任务ID
+    "status" : "true"
+  }
+  </pre>
+  
+#### 3.获取运行状态
+* 接口说明：向服务端发送完指令并成功后，通过接口返回的taskid获取相应任务的运行状态
+* 接口地址：http://192.168.1.101/getstatus
+* 接口类型：POST
+* 接口参数：
+  <pre>
+  * mode ： (int) 标识控制模式，根据mode值判定，取值范围[1,2,3]
+  * taskid : 任务ID
+  </pre>
+* 接口示例：
+  <pre>
+  {
+    "mode" : 1,
+    "taskid" : 10010, //标识正在进行的任务ID
+    "code" : 10001, //当前运行状态码
+    "error" : "出错相关信息"
+  }
+  运行状态码声明：
+  [10001] : 正在运行中
+  [10002] : 运行完成
+  [10003] : 轨迹出错
+  </pre>
