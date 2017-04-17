@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*
 # @Time    : 2017/4/5 10:58
 # @Author  : Aries
 # @Site    : 
