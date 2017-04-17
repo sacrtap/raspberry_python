@@ -39,12 +39,12 @@ def notfound():
 # 定义相应类
 class hello:
     def GET(self):
-        logging.info('web service root.')
-        return "web service root"
+        logging.info('web service started.')
+        return "web service started"
 
 
 class connect:
-    def GET(self):
+    def POST(self):
         logging.info('connect function : connecting...')
         _status = False
         _frequency = 0
@@ -57,7 +57,7 @@ class connect:
         return render.connect(_status, _frequency)
 
 class action:
-    def GET(self):
+    def POST(self):
         logging.info('action function :start receive action...')
         _mode = 0
         _json = None
@@ -76,7 +76,7 @@ class action:
         return render.action(_mode, _taskid, _status)
 
 class getstatus:
-    def GET(self):
+    def POST(self):
         logging.info('getstatus function :start get status...')
         _mode = 0
         _taskid = 0
@@ -91,7 +91,7 @@ class getstatus:
             return render.getstatus(_mode, _taskid, _code, _error)
 
 class stop:
-    def GET(self):
+    def POST(self):
         logging.info('stop function :stop init...')
         _mode = 0
         _taskid = 0
