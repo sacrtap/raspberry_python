@@ -31,7 +31,7 @@ app_root = os.path.dirname(__file__)
 templates_root = os.path.join(app_root, 'templates')
 render = web.template.render(templates_root)
 
-modeArray = [1, 2, 3]
+modeArray = [1, 2, 3] # 自由、预设、轨迹
 
 def notfound():
     return web.notfound("Sorry, the page you were looking for was not found.")
@@ -52,6 +52,7 @@ class connect:
         if data.get('frequency'):
             _status = True
             _frequency = data.get('frequency')
+
             logging.info('connect & setting : set frequency is %s', _frequency)
         web.header('Content-Type', 'text/json; charset=utf-8', unique=True)
         return render.connect(_status, _frequency)
