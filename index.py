@@ -12,6 +12,7 @@ import web
 import logging
 import logging.config
 import os
+import CarController
 
 logging.config.fileConfig("logger.conf")
 logger = logging.getLogger("example01")
@@ -33,6 +34,8 @@ render = web.template.render(templates_root)
 
 modeArray = [1, 2, 3] # 自由、预设、轨迹
 
+at = CarController.ActionTranslate()
+
 def notfound():
     return web.notfound("Sorry, the page you were looking for was not found.")
 
@@ -52,7 +55,7 @@ class connect:
         if data.get('frequency'):
             _status = True
             _frequency = data.get('frequency')
-
+            CarController.BasicConfig(_frequency) # 设置命令发送频率
             logging.info('connect & setting : set frequency is %s', _frequency)
         web.header('Content-Type', 'text/json; charset=utf-8', unique=True)
         return render.connect(_status, _frequency)
@@ -62,19 +65,18 @@ class action:
         logging.info('action function :start receive action...')
         _mode = 0
         _json = None
-        _taskid = 0
         _status = False
         data = web.input()
         if ((int(data.get('mode')) in modeArray) and (data.get('param') != "")):
             _mode = data.get('mode')
             _json = data.get('param')
-            _status = True
-            _taskid = 10001
-            logging.info('receive action : mode is %s, result : status is %s, taskid is %s', _mode, _status, _taskid)
+            at.setParam(_mode, _json)
+            _status = at.TransByMode()
+            logging.info('receive action : mode is %s, result : status is %s', _mode, _status)
         else:
             logging.warning('receive action is wrong : mode is %s, [json]%s', _mode, (data.get('param')))
         web.header('Content-Type', 'text/json; charset=utf-8', unique=True)
-        return render.action(_mode, _taskid, _status)
+        return render.action(_mode, _status)
 
 class getstatus:
     def POST(self):

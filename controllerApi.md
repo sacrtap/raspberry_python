@@ -48,7 +48,7 @@
   example [mode = 1]:
     {
         "direction" : "front", // [front、behind、left、right、up、down] = [前、后、左、右、上、下]
-        "speed" : "10" // 10cm per second
+        "speed" : "10", // 10cm per second
     }
     
   example [mode = 2]:(预设模式下，运动时长和距离不能同时存在)
