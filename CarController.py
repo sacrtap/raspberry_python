@@ -88,6 +88,7 @@ class CarMotion:
         self.MoveWithAPI(4,0, _step, _speed)
         self.MoveWithAPI(5,0, _step, _speed)
         logging.info('stop step & speed is : %s , %s', _step, _speed)
+        return True
 
     def MoveFront(self, _step = defaultStep, _speed = defaultSpeed):
         self.MoveWithAPI(1, 1, _step, _speed)
@@ -111,6 +112,7 @@ class CarMotion:
         self.MoveWithAPI(3, 0, _step, 0)
         self.MoveWithAPI(4, 1, _step, _speed)
         logging.info('TurnLeftByStep with step & speed is : %s , %s', _step, _speed)
+        return True
 
     def TurnRightByStep(self, _step = defaultTurnStep, _speed = defaultSpeed):
         self.MoveWithAPI(1, 1, _step, _speed)
@@ -118,14 +120,17 @@ class CarMotion:
         self.MoveWithAPI(3, 1, _step, _speed)
         self.MoveWithAPI(4, 0, _step, 0)
         logging.info('TurnRightByStep with step & speed is : %s , %s', _step, _speed)
+        return True
 
     def MoveUp(self, _step = defaultStep, _speed = defaultSpeed):
         self.MoveWithAPI(5, 1, _step, _speed)
         logging.info('MoveUp with step & speed is : %s , %s', _step, _speed)
+        return True
 
     def MoveDown(self, _step = defaultStep, _speed = defaultSpeed):
         self.MoveWithAPI(5, 0, _step, _speed)
         logging.info('MoveDown with step & speed is : %s , %s', _step, _speed)
+        return True
 
 class ActionTranslate:
     cm = None
