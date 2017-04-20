@@ -66,6 +66,7 @@ class action:
         _json = None
         _status = False
         data = web.input()
+        logging.info('receive action : mode is %s, param is %s', data.get('mode'), data.get('param'))
         if ((int(data.get('mode')) in modeArray) and (data.get('param') != "")):
             _mode = data.get('mode')
             _json = data.get('param')
