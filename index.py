@@ -54,7 +54,7 @@ class connect:
         data = web.input()
         if data.get('frequency'):
             _status = True
-            _frequency = data.get('frequency')
+            _frequency = int(data.get('frequency'))
             CarController.BasicConfig(_frequency) # 设置命令发送频率
             logging.info('connect & setting : set frequency is %s', _frequency)
         web.header('Content-Type', 'text/json; charset=utf-8', unique=True)
