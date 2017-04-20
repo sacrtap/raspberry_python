@@ -33,7 +33,6 @@ templates_root = os.path.join(app_root, 'templates')
 render = web.template.render(templates_root)
 
 modeArray = [1, 2, 3] # 自由、预设、轨迹
-
 at = CarController.ActionTranslate()
 
 def notfound():
