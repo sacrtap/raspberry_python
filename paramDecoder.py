@@ -15,7 +15,7 @@ class FreeDecoder:
         self.jsonParam = json.loads(_json)
 
     def getDirection(self):
-        return int(self.jsonParam["direction"])
+        return self.jsonParam["direction"]
 
     def getSpeed(self):
         return int(self.jsonParam["speed"])
