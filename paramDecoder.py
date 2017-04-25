@@ -7,6 +7,8 @@
 # @Software: PyCharm
 
 import json
+import logging
+import logging.config
 
 class FreeDecoder:
     def __init__(self, _json):
@@ -32,7 +34,22 @@ class PresetDecoder:
         return int(_r["speed"])
 
     def getDistance(self, _r):
-        return int(_r["distance"])
+        try:
+            if(int(_r["distance"])):
+                return int(_r["distance"])
+            else:
+                return 0
+        except Exception, e:
+            logging.warning('getDistance is warning: %s', e)
+            return 0
+
 
     def getDuration(self, _r):
-        return int(_r["duration"])
+        try:
+            if(int(_r["duration"])):
+                return int(_r["duration"])
+            else:
+                return 0
+        except Exception, e:
+            logging.warning('getDuration is warning: %s', e)
+            return 0
