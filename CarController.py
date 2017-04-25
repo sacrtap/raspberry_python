@@ -135,6 +135,7 @@ class CarMotion:
 class ActionTranslate:
     cm = None
     status = False
+    param = None
     def __init__(self):
         self.cm = CarMotion()
         self.status = False

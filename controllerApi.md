@@ -57,7 +57,7 @@
             {
                 "direction" : "front",
                 "speed" : "10",
-                "duration" : "20",// 运动时长，毫秒
+                "duration" : "20"// 运动时长，毫秒
             },
             {
                 "direction" : "left",

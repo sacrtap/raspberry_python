@@ -13,10 +13,10 @@ class FreeDecoder:
         self.jsonParam = json.loads(_json)
 
     def getDirection(self):
-        return self.jsonParam["direction"]
+        return int(self.jsonParam["direction"])
 
     def getSpeed(self):
-        return self.jsonParam["speed"]
+        return int(self.jsonParam["speed"])
 
 class PresetDecoder:
     def __init__(self, _json):
@@ -26,13 +26,13 @@ class PresetDecoder:
         return self.jsonParam["list"]
 
     def getDirection(self, _r):
-        return _r["direction"]
+        return int(_r["direction"])
 
     def getSpeed(self, _r):
-        return _r["speed"]
+        return int(_r["speed"])
 
     def getDistance(self, _r):
-        return _r["distance"]
+        return int(_r["distance"])
 
     def getDuration(self, _r):
-        return _r["distance"]
+        return int(_r["duration"])
