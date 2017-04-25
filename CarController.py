@@ -23,6 +23,7 @@ class Direction:
     right = "right"
     up = "up"
     down = "down"
+    stop= "stop"
 
 class BasicConfig:
     frequency = 200
@@ -55,6 +56,8 @@ class CarMotion:
             return self.MoveUp(self.defaultStep, _speed)
         elif(_direction == Direction.down):
             return self.MoveDown(self.defaultStep, _speed)
+        elif(_direction == Direction.stop):
+            return self.Stop(10,10)
         else:
             return False
     @classmethod
