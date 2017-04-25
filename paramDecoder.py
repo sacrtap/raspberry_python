@@ -28,7 +28,7 @@ class PresetDecoder:
         return self.jsonParam["list"]
 
     def getDirection(self, _r):
-        return int(_r["direction"])
+        return _r["direction"]
 
     def getSpeed(self, _r):
         return int(_r["speed"])
